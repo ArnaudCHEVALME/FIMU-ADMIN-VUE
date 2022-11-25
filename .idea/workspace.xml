@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="194061af-48bc-47a1-b881-e911728a28c1" name="Changes" comment="truc de base">
-      <change afterPath="$PROJECT_DIR$/fivue/src/components/NavBar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fivue/src/components/TabView.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fivue/src/views/LoginView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fivue/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/fivue/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fivue/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fivue/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/fivue/src/views/HomeView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,16 +29,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Nono/Cours/FIMU/FIVUE&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Nono/Cours/FIMU/FIVUE",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Nono\Cours\FIMU\FIVUE" />
@@ -60,6 +57,7 @@
       <workItem from="1669283447297" duration="842000" />
       <workItem from="1669284301380" duration="108000" />
       <workItem from="1669284443075" duration="7348000" />
+      <workItem from="1669361728040" duration="1503000" />
     </task>
     <task id="LOCAL-00001" summary="truc de base">
       <created>1669284108166</created>
@@ -82,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669285263240</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="truc de base">
+      <created>1669361856646</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669361856646</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
