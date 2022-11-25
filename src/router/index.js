@@ -1,18 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import LoginView from '../views/LoginView.vue'
 import CardNews from "@/components/CardNews";
 import GridComponent from '../components/GridComponent'
 import CardSaison from '../components/CardSaison.vue'
-import LoginPage from '../components/LoginPage.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'login',
+    component: LoginView
   },
   {
     path: '/news',
@@ -28,11 +27,6 @@ const routes = [
     path: '/grid',
     name: 'grid',
     component: GridComponent
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: LoginPage
   },
 ]
 const router = new VueRouter({
