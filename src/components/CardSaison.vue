@@ -1,10 +1,10 @@
 <template>
   <v-container>
-    <v-card class="mx-auto" max-width="344" elevation="10">
-      <v-img :src="saison.image" height="60px"></v-img>
-        <v-card-text>
-          {{ saison.date }}: {{ saison.theme }}
-        </v-card-text>
+    <h1>{{saison.image}}</h1>
+    <v-card class="mx-auto" elevation="10" max-width="344">
+      <v-card-text>
+        <v-img :src="require('../assets/shrek.png')" ></v-img>
+      </v-card-text>
       <v-card-subtitle>
         <v-row>
           <v-col cols="1">
@@ -34,18 +34,20 @@
 <script>
 export default {
   name: "CardSaison",
-  data: () => ({
-    saison: {
-      date: "22/10/2022",
-      theme: "Shrek",
-      image: '../src/assets/logo.png',
-      paysId: 1,
-      pays: {
+  data: () => {
+    return {
+      saison: {
+        date: "22/10/2022",
+        theme: "Shrek",
+        image: '../assets/logo.png',
         paysId: 1,
-        nomPays: "Zimbabwe"
+        pays: {
+          paysId: 1,
+          nomPays: "Zimbabwe"
+        }
       }
-    },
-  })
+    }
+  }
 }
 </script>
 
