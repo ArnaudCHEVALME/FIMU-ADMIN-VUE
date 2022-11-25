@@ -11,14 +11,6 @@
         {{ content }}
       </div>
     </v-card-text>
-    <v-card-actions>
-      <v-btn
-          text
-          color="deep-purple accent-4"
-      >
-        Learn More
-      </v-btn>
-    </v-card-actions>
     <v-divider></v-divider>
     <v-card-subtitle>
       <p class="">
