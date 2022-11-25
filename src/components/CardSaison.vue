@@ -1,6 +1,4 @@
 <template>
-  <v-container>
-    <h1>{{saison.image}}</h1>
     <v-card class="mx-auto" elevation="10" max-width="344">
       <v-card-text>
         <v-img :src="require('../assets/shrek.png')" ></v-img>
@@ -28,7 +26,6 @@
         </v-row>
       </v-card-subtitle>
     </v-card>
-  </v-container>
 </template>
 
 <script>

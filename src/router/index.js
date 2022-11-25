@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import CardNews from "@/components/CardNews";
 import GridComponent from '../components/GridComponent'
 import CardSaison from '../components/CardSaison.vue'
+import LoginPage from '../components/LoginPage.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/grid',
     name: 'grid',
     component: GridComponent
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginPage
   },
 ]
 const router = new VueRouter({
