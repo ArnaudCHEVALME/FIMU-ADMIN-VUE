@@ -32,7 +32,6 @@ const routes = [
     component: GridComponent
   },
 ]
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
