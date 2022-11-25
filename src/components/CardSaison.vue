@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card v-for="(saison, id) in saisons" :key="id" class="mx-auto" max-width="344" elevation="10">
+    <v-card class="mx-auto" max-width="344" elevation="10">
       <v-img :src="saison.image" height="60px"></v-img>
         <v-card-text>
           {{ saison.date }}: {{ saison.theme }}
@@ -35,29 +35,18 @@
 export default {
   name: "CardSaison",
   data: () => ({
-    saisons: [
-      {
-        date: "22/10/2022",
-        theme: "Shrek",
-        image: '../src/assets/logo.png',
+    saison: {
+      date: "22/10/2022",
+      theme: "Shrek",
+      image: '../src/assets/logo.png',
+      paysId: 1,
+      pays: {
         paysId: 1,
-        pays: {
-          paysId: 1,
-          nomPays: "Zimbabwe"
-        }
-      }, {
-        date: "23/10/2022",
-        theme: "Imaginaire",
-        image: '../assets/logo.png',
-        paysId: 2,
-        pays: {
-          paysId: 2,
-          nomPays: "Listembourg"
-        }
+        nomPays: "Zimbabwe"
       }
-    ]
+    },
   })
-};
+}
 </script>
 
 <style scoped>

@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import GridComponent from '../components/GridComponent'
+import CardSaison from '../components/CardSaison.vue'
 
 Vue.use(VueRouter)
 
@@ -21,15 +23,13 @@ const routes = [
   {
     path: '/saisons',
     name: 'saisons',
-    component: () => import(/* webpackChunkName: "about" */ '../components/CardSaison.vue')
-  }
+    component: CardSaison
   },
   {
     path: '/grid',
     name: 'grid',
     component: GridComponent
   },
-
 ]
 
 const router = new VueRouter({
