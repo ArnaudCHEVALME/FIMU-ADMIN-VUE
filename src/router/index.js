@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import CardNews from "@/components/CardNews";
 import GridComponent from '../components/GridComponent'
 import CardSaison from '../components/CardSaison.vue'
 
@@ -13,12 +14,12 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/news',
+    name: 'news',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: CardNews
   },
   {
     path: '/saisons',
