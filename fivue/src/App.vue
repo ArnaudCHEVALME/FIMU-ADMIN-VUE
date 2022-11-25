@@ -1,42 +1,36 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+    <v-navigation-drawer permanent>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="text-h6">
+            FIMU BACK END
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            Connecté en tant que Null
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <v-divider></v-divider>
 
-      <v-spacer></v-spacer>
+      <v-list dense nav>
+        <v-list-item
+            v-for="item in menus"
+            :key="item.title"
+            link
+        >
+          <v-divider></v-divider>
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }} mdi-spin</v-icon>
+            </v-list-item-icon>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
     <v-main>
       <router-view/>
     </v-main>
@@ -49,7 +43,33 @@ export default {
   name: 'App',
 
   data: () => ({
-    //
+    menus: [
+      {
+        title: "Artistes",
+        icon: "mdi-guitar-acoustic mdi-rotate-135"
+      }, {
+        title: "Scènes",
+        icon: "mdi-microphone-variant"
+      }, {
+        title: "Programmation",
+        icon: "mdi-clock-time-four-outline"
+      }, {
+        title: "Carte",
+        icon: "mdi-map"
+      }, {
+        title: "News",
+        icon: "mdi-newspaper-variant-multiple"
+      }, {
+        title: "Statistiques",
+        icon: "mdi-chart-areaspline"
+      }, {
+        title: "Gestion des saisons",
+        icon: "mdi-calendar"
+      }, {
+        title: "Gestion des utilisateur",
+        icon: "mdi-account"
+      }
+    ]
   }),
 };
 </script>
