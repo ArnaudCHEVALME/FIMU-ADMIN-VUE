@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import LoginView from '../views/LoginView.vue'
-import CardNews from "@/components/CardNews";
+import CardNews from "@/components/CardNews"
 import GridComponent from '../components/GridComponent'
 import CardSaison from '../components/CardSaison.vue'
+import SearchBar from '../components/SearchBar'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ const routes = [
     name: 'grid',
     component: GridComponent
   },
+  {
+    path: '/search',
+    name: 'search,',
+    component: SearchBar
+  }
 ]
 const router = new VueRouter({
   mode: 'history',
