@@ -1,5 +1,7 @@
 <template>
-  <Login></Login>
+  <v-img :src="require('../assets/fimu.jpg')">
+    <Login></Login>
+  </v-img>
 </template>
 
 <script>
