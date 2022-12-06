@@ -23,7 +23,7 @@
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
 
-        <v-list-item-content>
+        <v-list-item-content @click="$router.push(item.route)">
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -40,28 +40,36 @@ export default {
         menus: [
           {
             title: "Artistes",
-            icon: "mdi-guitar-acoustic"
+            icon: "mdi-guitar-acoustic",
+            route: "/artistes"
           }, {
             title: "Scènes",
-            icon: "mdi-microphone-variant"
+            icon: "mdi-microphone-variant",
+            route: "/scenes"
           }, {
             title: "Programmation",
-            icon: "mdi-clock-time-four-outline"
+            icon: "mdi-clock-time-four-outline",
+            route: "/programmation"
           }, {
             title: "Carte",
-            icon: "mdi-map"
+            icon: "mdi-map",
+            route: "/carte"
           }, {
             title: "News",
-            icon: "mdi-newspaper-variant-multiple"
+            icon: "mdi-newspaper-variant-multiple",
+            route: "/news"
           }, {
             title: "Statistiques",
-            icon: "mdi-chart-areaspline"
+            icon: "mdi-chart-areaspline",
+            route: "/stats"
           }, {
             title: "Gestion des saisons",
-            icon: "mdi-calendar"
+            icon: "mdi-calendar",
+            route: "/saisons"
           }, {
             title: "Gestion des utilisateur",
-            icon: "mdi-account"
+            icon: "mdi-account",
+            route: "/utilisateurs"
           }
         ]
       }
