@@ -5,40 +5,50 @@ import CardNews from "@/components/CardNews"
 import GridComponent from '../components/GridComponent'
 import CardSaison from '../components/CardSaison.vue'
 import SearchBar from '../components/SearchBar'
+import NavBar from "@/components/NavBar.vue";
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'login',
-    component: LoginView
-  },
-  {
-    path: '/news',
-    name: 'news',
-    component: CardNews
-  },
-  {
-    path: '/saisons',
-    name: 'saisons',
-    component: CardSaison
-  },
-  {
-    path: '/grid',
-    name: 'grid',
-    component: GridComponent
-  },
-  {
-    path: '/search',
-    name: 'search,',
-    component: SearchBar
-  }
+    {
+        path: '/',
+        name: 'login',
+        components: {
+            default: LoginView,
+            menu: null
+        }
+    },
+    {
+        path: '/news',
+        name: 'news',
+        components: {
+            default: CardNews,
+            menu: NavBar
+        }
+    },
+    {
+        path: '/saisons',
+        name: 'saisons',
+        components: {
+            default: CardSaison,
+            menu: NavBar
+        }
+    },
+    {
+        path: '/grid',
+        name: 'grid',
+        components: GridComponent
+    },
+    {
+        path: '/search',
+        name: 'search,',
+        components: SearchBar
+    }
 ]
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
 })
 
 export default router
