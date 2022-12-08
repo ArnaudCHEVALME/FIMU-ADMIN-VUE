@@ -5,7 +5,7 @@ import CardNews from "@/components/CardNews"
 import GridComponent from '../components/GridComponent'
 import SaisonPage from '../views/SaisonView.vue'
 import SearchBar from '../components/SearchBar'
-import NavBar from "@/components/NavBar.vue"
+import NavBar from "@/components/NavBar.vue";
 
 Vue.use(VueRouter)
 

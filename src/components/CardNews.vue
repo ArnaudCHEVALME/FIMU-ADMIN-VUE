@@ -1,20 +1,20 @@
 <template>
   <v-card
-      class="mx-md-auto rounded-lg"
-      max-width="688"
+      class="rounded-lg"
+      max-width="fit-content"
   >
     <v-card-text>
       <p class="text-h4 text--primary">
-        {{ title }}
+        {{ news.title }}
       </p>
       <div class="text--primary">
-        {{ content }}
+        {{ news.content }}
       </div>
     </v-card-text>
     <v-divider></v-divider>
     <v-card-subtitle>
       <p class="">
-        {{ date }}
+        {{ news.date }}
       </p>
     </v-card-subtitle>
   </v-card>
@@ -28,14 +28,7 @@ export default {
       required: true
     }
   },
-  name: "CardNews",
-  data: () => {
-    return {
-      title: "News 1",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquam nisl, eget aliquam nunc nisl sit amet lorem. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquam nisl, eget aliquam nunc nisl sit amet lorem.",
-      date: "12/12/2019"
-    }
-  }
+  name: "CardNews"
 };
 
 </script>
