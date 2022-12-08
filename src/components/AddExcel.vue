@@ -5,20 +5,25 @@
                 <label for="doc">Choisissez un document </label>
                 <input type="file" id="doc" name="doc" accept=".xlsm">
             </v-row>
-            <v-btn>Envoyer</v-btn>
+            <v-btn @click="docEnvoie">Envoyer</v-btn>
         </v-col>
-        
     </v-container>
-
 </template>
 
 <script>
-import { component } from 'vue/types/umd';
-
 export default {
     name: "AddExcel",
 
-    components: { component }
-    
+    data: () => {
+        fichier: File
+    },
+
+    methods: {
+        docEnvoie(){
+            file=document.querySelector('doc');
+            console.log(this.file);
+            return file;
+        }
+    },
 }
 </script>
