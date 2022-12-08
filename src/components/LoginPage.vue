@@ -32,7 +32,7 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-btn @click.capture="send">
+          <v-btn @click="send">
             <v-icon>
               mdi-arrow-right-circle-outline
             </v-icon>
