@@ -16,7 +16,7 @@
 import { component } from 'vue/types/umd';
 
 export default {
-    name: "AddDoc",
+    name: "AddExcel",
 
     components: { component }
     
