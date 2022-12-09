@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import LoginView from '../views/LoginView.vue'
-import CardNews from "@/components/CardNews"
 import GridComponent from '../components/GridComponent'
 import SaisonPage from '../views/SaisonView.vue'
 import SearchBar from '../components/SearchBar'
 import NavBar from "@/components/NavBar.vue";
+import NewsView from "@/views/NewsView.vue";
 
 Vue.use(VueRouter)
 
@@ -22,7 +22,7 @@ const routes = [
         path: '/news',
         name: 'news',
         components: {
-            default: CardNews,
+            default: NewsView,
             menu: NavBar
         }
     },
