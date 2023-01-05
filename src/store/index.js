@@ -39,8 +39,8 @@ export default new Vuex.Store({
   actions: {
     async fetchSaisons({commit}) {
       try {
-        const response = await axios.get('/api/saisons/')
-        commit('setSaisons', response.data.data)
+        const saisons = await axios.get('/api/saisons/')
+        commit('setSaisons', saisons.data.data)
       } catch (error) {
         console.error(error)
       }
