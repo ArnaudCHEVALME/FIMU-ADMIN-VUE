@@ -15,7 +15,7 @@ export default {
     name: "AddExcel",
 
     data: () => {
-        fichier: File
+        File
     },
 
     methods: {

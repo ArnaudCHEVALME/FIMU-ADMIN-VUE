@@ -13,6 +13,15 @@
 
     <v-divider></v-divider>
 
+<!--    <v-select v-if="saisons.length != 0"-->
+<!--        :items="saisons"-->
+<!--        item-text="dateSaison"-->
+<!--        item-value="saisonId"-->
+<!--        label="Saisons"-->
+<!--    ></v-select>-->
+
+    <v-divider></v-divider>
+
     <v-list dense nav>
       <v-list-item
           v-for="item in menus"
@@ -34,6 +43,9 @@
 <script>
 export default {
   name: "NavBar",
+  computed:{
+
+  },
   data: () => {
     {
       return {

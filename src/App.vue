@@ -13,6 +13,14 @@ export default {
   name: 'App',
   data: () => ({
   }),
+  mounted() {
+    this.fetchSaisons()
+  },
+  methods: {
+    async fetchSaisons() {
+      await this.$store.dispatch('fetchSaisons')
+    }
+  },
 };
 </script>
 <header/>
