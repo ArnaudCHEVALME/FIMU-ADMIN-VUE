@@ -13,12 +13,12 @@
 
     <v-divider></v-divider>
 
-<!--    <v-select v-if="saisons.length != 0"-->
-<!--        :items="saisons"-->
-<!--        item-text="dateSaison"-->
-<!--        item-value="saisonId"-->
-<!--        label="Saisons"-->
-<!--    ></v-select>-->
+    <v-select v-if="saisons.length != 0"
+        :items="saisons"
+        item-text="dateSaison"
+        item-value="saisonId"
+        label="Saisons"
+    ></v-select>
 
     <v-divider></v-divider>
 
@@ -41,10 +41,12 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
   name: "NavBar",
   computed:{
-
+    ...mapState(["saisons"])
   },
   data: () => {
     {
