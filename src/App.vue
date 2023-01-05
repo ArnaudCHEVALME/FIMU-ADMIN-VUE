@@ -16,6 +16,7 @@ export default {
   mounted() {
     this.fetchSaisons()
     this.fetchNews()
+    this.fetchPays()
   },
   methods: {
     async fetchSaisons() {
@@ -23,6 +24,9 @@ export default {
     },
     async fetchNews() {
       await this.$store.dispatch('fetchNews')
+    },
+    async fetchPays() {
+      await this.$store.dispatch('fetchPays')
     }
   },
 };
