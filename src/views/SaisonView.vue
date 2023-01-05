@@ -8,41 +8,11 @@
 
 <script>
 import CardSaison from "@/components/CardSaison.vue";
+import {mapState} from "vuex";
 export default {
   name: "SaisonPage",
-  data() {
-    return {
-      saisons: [
-        {
-          date: "22/10/2022",
-          theme: "Shrek",
-          image: 'fimu.jpg',
-          paysId: 1,
-          pays: {
-            paysId: 1,
-            nomPays: "Zimbabwe"
-          },
-          couleurs: [
-            {nom: 'FFFFFF'},
-            {nom: 'FFFFFF'},
-          ]
-        },
-        {
-          date: "11/09/2001",
-          theme: "Boom",
-          image: 'shrek.png',
-          paysId: 1,
-          pays: {
-            paysId: 1,
-            nomPays: "New York"
-          },
-          couleurs: [
-            {nom: 'shrek'},
-            {nom: 'fiona'},
-          ]
-        }
-      ]
-    }
+  computed: {
+    ...mapState(['saisons']),
   },
   components: {
     CardSaison

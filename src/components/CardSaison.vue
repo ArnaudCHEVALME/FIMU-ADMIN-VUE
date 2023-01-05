@@ -3,14 +3,15 @@
     <v-card class="mx-auto" elevation="10" max-width="344">
       <v-card-text>
         <v-row>
-          <v-img :src="getImage(saison.image)"></v-img>
+          <!-- <v-img :src="getImage(saison.image)"></v-img> -->
+          {{ saison.bannierePath }}
         </v-row>
         <v-row>
           <v-col>
-            {{ saison.pays.nomPays }}
+            {{ saison.dateSaison }}
           </v-col>
           <v-col>
-            {{ saison.date }}
+            {{ saison.theme }}
           </v-col>
         </v-row>
       </v-card-text>
