@@ -15,10 +15,14 @@ export default {
   }),
   mounted() {
     this.fetchSaisons()
+    this.fetchNews()
   },
   methods: {
     async fetchSaisons() {
       await this.$store.dispatch('fetchSaisons')
+    },
+    async fetchNews() {
+      await this.$store.dispatch('fetchNews')
     }
   },
 };

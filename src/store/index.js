@@ -61,6 +61,14 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async fetchNews({commit}, saisonId) {
+      try{
+        const response = await axios.get('/api/news/', {saisonId})
+        commit('setNews', response.data.data)
+      }catch (error){
+        console.error(error)
+      }
+    }
   },
   modules: {}
 })
