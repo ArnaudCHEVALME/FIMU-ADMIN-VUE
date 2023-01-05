@@ -42,7 +42,7 @@
 export default {
   name: "DatePicker",
   props: {
-    value: String,
+    value: Date,
     label: String
   },
   data: function () {
@@ -53,7 +53,7 @@ export default {
   },
   methods:{
     updateDate: function(){
-      this.$emit('input', Date.parse(this.date))
+      this.$emit('input', new Date(this.date))
     }
   }
 }
