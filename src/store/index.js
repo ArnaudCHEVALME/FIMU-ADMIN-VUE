@@ -13,7 +13,7 @@ export default new Vuex.Store({
     genres: [],
     sousGenres: [],
     news: [],
-    pays: [],
+    paysAll: [],
   },
   getters: {},
   mutations: {
@@ -22,6 +22,7 @@ export default new Vuex.Store({
     },
     setSaisons(state, saisons){
       state.saisons = saisons
+      console.log(state.saisons)
     },
     setGenres(state, genres){
       state.genres = genres
@@ -33,7 +34,7 @@ export default new Vuex.Store({
       state.news = news
     },
     setPays(state, pays){
-      state.pays = pays
+      state.paysAll = pays
     },
   },
   actions: {
@@ -57,6 +58,14 @@ export default new Vuex.Store({
       try {
         const response = await axios.get('/api/sousGenre/', {saisonId})
         commit('setSousGenres', response.data.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async fetchPays({commit}) {
+      try {
+        const pays = await axios.get('/api/pays/')
+        commit('setPays', pays.data)
       } catch (error) {
         console.error(error)
       }

@@ -14,11 +14,15 @@ export default {
   data: () => ({
   }),
   mounted() {
-    this.fetchSaisons()
+    this.fetchSaisons(),
+    this.fetchPays()
   },
   methods: {
     async fetchSaisons() {
       await this.$store.dispatch('fetchSaisons')
+    },
+    async fetchPays() {
+      await this.$store.dispatch('fetchPays')
     }
   },
 };
