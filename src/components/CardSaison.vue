@@ -3,7 +3,7 @@
     <v-card class="mx-auto" elevation="10" max-width="344">
       <v-card-text>
         <v-row>
-          <!-- <v-img :src="getImage(saison.image)"></v-img> -->
+          <v-img :src="getImage()"></v-img>
           {{ saison.bannierePath }}
         </v-row>
         <v-row>
@@ -57,8 +57,8 @@ export default {
     }
   },
   methods: {
-    getImage(path){
-      return require(`../assets/${path}`)
+    getImage(){
+      return require(`../../public/banniereSaison/${this.saison.bannierePath}.png`)
     },
     showInfos(){
       console.log("Pute")
