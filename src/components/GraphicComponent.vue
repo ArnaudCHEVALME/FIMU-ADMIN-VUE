@@ -16,6 +16,7 @@
 </template>
 
 <script>
+
 import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
