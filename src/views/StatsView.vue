@@ -16,7 +16,7 @@
 <script>
 //import
 import GraphicComponent from "@/components/GraphicComponent.vue";
-
+//Tes beau mael
 export default {
   name: "StatsView",
 
