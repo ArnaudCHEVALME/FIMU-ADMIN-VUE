@@ -5,16 +5,16 @@
   >
     <v-card-text>
       <p class="text-h4 text--primary">
-        {{ news.title }}
+        {{ news.titre }}
       </p>
       <div class="text--primary">
-        {{ news.content }}
+        {{ news.description }}
       </div>
     </v-card-text>
     <v-divider></v-divider>
     <v-card-subtitle>
       <p class="">
-        {{ news.date }}
+        {{ news.publishAt }}
       </p>
     </v-card-subtitle>
   </v-card>

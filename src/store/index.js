@@ -65,11 +65,19 @@ export default new Vuex.Store({
     async fetchPays({commit}) {
       try {
         const pays = await axios.get('/api/pays/')
-        commit('setPays', pays.data)
+        commit('setPays', pays.data.data)
       } catch (error) {
         console.error(error)
       }
     },
+    async fetchNews({commit}){
+      try {
+        const news = await axios.get("/api/news/")
+        commit('setNews', news.data)
+      }catch (err) {
+        console.error(err)
+      }
+    }
   },
   modules: {}
 })

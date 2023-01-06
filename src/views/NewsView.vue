@@ -42,14 +42,6 @@
                       required
                   ></v-textarea>
                 </v-col>
-                <v-col cols="12">
-                  <v-switch
-                      v-model="switch1"
-                      inset
-                      :label="`Notifier les utilisateurs`"
-                  ></v-switch>
-                </v-col>
-
               </v-row>
             </v-container>
           </v-card-text>
@@ -65,7 +57,7 @@
             <v-btn
                 color="blue darken-1"
                 text
-                @click="dialog = false"
+                @click="submitNews"
             >
               Enregistrer
             </v-btn>
@@ -77,8 +69,8 @@
 
     <div class="justify-start d-flex flex-column mb-10 ml-10 mr-10 mt-4">
       <CardNews
-          v-for="news in newsList" :key="news.id"
-          :news="news"
+          v-for="n in news" :key="n.newsId"
+          :news="n"
           class="mb-4">
       </CardNews>
     </div>
@@ -87,6 +79,7 @@
 
 <script>
 import CardNews from "@/components/CardNews.vue";
+import {mapState} from "vuex";
 
 export default {
   name: "NewsView",
@@ -94,32 +87,14 @@ export default {
   data: () => {
     return {
       dialog: false,
-      newsList: [
-        {
-          id: 0,
-          title: "News 1",
-          content: "trop mimis ce content",
-          date: "01/01/2020"
-        },
-        {
-          id: 1,
-          title: "News 2",
-          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.\n Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.",
-          date: "01/01/2020"
-        },
-        {
-          id: 2,
-          title: "News 3",
-          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.",
-          date: "01/01/2020"
-        },
-        {
-          id: 3,
-          title: "News 4",
-          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.",
-          date: "01/01/2020"
-        }
-      ]
+    }
+  },
+  computed:{
+    ...mapState(["news"])
+  },
+  methods:{
+    submitNews(){
+      this.dialog = false
     }
   }
 }
