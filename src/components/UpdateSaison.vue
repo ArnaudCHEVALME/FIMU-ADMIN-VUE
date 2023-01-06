@@ -4,7 +4,7 @@
       Création d'une saison
     </v-card-title>
     <v-card-text>
-      <v-select v-model="newSaison.paysHonneurId"
+      <v-select v-model="paysId"
                 :items="paysAll"
                 item-text="nompays"
                 item-value="paysId"
@@ -14,7 +14,7 @@
       </v-select>
       <v-text-field
           prepend-icon="mdi-palette"
-          v-model="newSaison.theme"
+          v-model="theme"
           label="Thème de la Saison"
       >
       </v-text-field>
@@ -23,10 +23,10 @@
           v-model="image"
           label="Image de la Saison"
       ></v-file-input>
-      <v-img v-if="newSaison.bannierePath != null " :src="getImage()" width="400" height="400"></v-img>
+      <v-img v-if="image != null " :src="getImage()" width="400" height="400"></v-img>
       <div v-else>Pas d'image pour cette Saison</div>
       <DatePicker
-          v-model="newSaison.dateSaison"
+          v-model="date"
           :label="'Date de la Saison'"
       ></DatePicker>
     </v-card-text>
@@ -34,7 +34,7 @@
       <v-btn @click="$emit('ChangeStateDialog')">
         Annulez
       </v-btn>
-      <v-btn>
+      <v-btn @click="updateSaison">
         Mettre a jour
       </v-btn>
     </v-card-actions>
@@ -53,11 +53,10 @@ export default {
   },
   data () {
     return {
-      newSaison: this.saison,
-      date: null,
-      paysId: null,
-      theme: null,
-      image: null
+      date: new Date(this.saison.dateSaison),
+      paysId: this.saison.paysHonneurId,
+      theme: this.saison.theme,
+      image: this.saison.bannierePath
     }
   },
   props: {
@@ -66,16 +65,15 @@ export default {
   methods: {
     async updateSaison(){
       let saison = {
-        dateSaison: this.newSaison.dateSaison.toISOString(),
-        theme: this.newSaison.theme,
-        bannierePath: this.newSaison
+        dateSaison: this.date.toISOString(),
+        theme: this.theme.theme,
+        bannierePath: this.saison.saisonId
       }
-      console.log(saison)
-      await axios.post('/api/saisons/'+this.newSaison.saisonId, saison)
+      await axios.put('/api/saisons/'+this.saison.saisonId, saison)
       await this.$store.dispatch('fetchSaisons')
     },
     getImage(){
-      return require(`../../public/banniereSaison/${this.newSaison.bannierePath}.png`)
+      return require(`../../public/banniereSaison/${this.image}.png`)
     },
   }
 }

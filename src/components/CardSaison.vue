@@ -41,7 +41,7 @@
     <v-dialog  v-model="dialogState"
               fullscreen
               hide-overlay
-              transition="dialog-bottom-transition">
+              transition="dialog-top-transition">
       <!-- <SaisonInfo :saison="saison" @close="closeInfos"></SaisonInfo> -->
       <update-saison @ChangeStateDialog="closeInfos" :saison="this.saison" ></update-saison>
     </v-dialog>
