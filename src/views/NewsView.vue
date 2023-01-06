@@ -65,7 +65,7 @@
             <v-btn
                 color="blue darken-1"
                 text
-                @click="dialog = false"
+                @click="submitNews"
             >
               Enregistrer
             </v-btn>
@@ -77,8 +77,8 @@
 
     <div class="justify-start d-flex flex-column mb-10 ml-10 mr-10 mt-4">
       <CardNews
-          v-for="news in newsList" :key="news.id"
-          :news="news"
+          v-for="n in news" :key="n.id"
+          :news="n"
           class="mb-4">
       </CardNews>
     </div>
@@ -87,16 +87,24 @@
 
 <script>
 import CardNews from "@/components/CardNews.vue";
-import { mapState } from "vuex";
+import {mapState} from "vuex";
 
 export default {
   name: "NewsView",
-  computed: {
-    ...mapState(['news']),
+  components: {CardNews},
+  data: () => {
+    return {
+      dialog: false,
+    }
   },
-  components: {CardNews}
-
-  
+  computed:{
+    ...mapState(["news"])
+  },
+  methods:{
+    submitNews(){
+      this.dialog = false
+    }
+  }
 }
 
 </script>

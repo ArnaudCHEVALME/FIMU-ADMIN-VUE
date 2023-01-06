@@ -6,6 +6,7 @@ import SaisonPage from '../views/SaisonView.vue'
 import SearchBar from '../components/SearchBar'
 import NavBar from "@/components/NavBar.vue";
 import NewsView from "@/views/NewsView.vue";
+import StatsView from "@/views/StatsView.vue";
 
 Vue.use(VueRouter)
 
@@ -46,6 +47,15 @@ const routes = [
             default: SearchBar,
             menu: NavBar
         }
+    },
+    {
+        path: '/stats',
+        name: 'stats',
+        components: {
+            default: StatsView,
+            menu: NavBar
+        }
+
     }
 ]
 const router = new VueRouter({

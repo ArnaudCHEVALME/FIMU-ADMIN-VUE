@@ -14,20 +14,14 @@ export default {
   data: () => ({
   }),
   mounted() {
-    this.fetchSaisons()
-    this.fetchNews()
-    this.fetchPays()
+    this.loadEveryThing()
   },
   methods: {
-    async fetchSaisons() {
+    async loadEveryThing() {
       await this.$store.dispatch('fetchSaisons')
-    },
-    async fetchNews() {
+      await this.$store.dispatch('fetchPays')
       await this.$store.dispatch('fetchNews')
     },
-    async fetchPays() {
-      await this.$store.dispatch('fetchPays')
-    }
   },
 };
 </script>
