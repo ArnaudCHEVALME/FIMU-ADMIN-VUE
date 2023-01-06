@@ -3,8 +3,8 @@
     <v-card class="mx-auto" elevation="10" max-width="344">
       <v-card-text>
         <v-row>
-          <v-img :src="getImage()"></v-img>
-          {{ saison.bannierePath }}
+          <v-img v-if="saison.bannierePath != null" :src="getImage()"></v-img>
+          <div v-else>Pas d'image</div>
         </v-row>
         <v-row>
           <v-col>
@@ -38,14 +38,18 @@
         </v-row>
       </v-card-subtitle>
     </v-card>
-    <v-dialog v-model="dialogState" width="400px">
-      <SaisonInfo :saison="saison" @close="closeInfos"></SaisonInfo>
+    <v-dialog  v-model="dialogState"
+              fullscreen
+              hide-overlay
+              transition="dialog-bottom-transition">
+      <!-- <SaisonInfo :saison="saison" @close="closeInfos"></SaisonInfo> -->
+      <update-saison @ChangeStateDialog="closeInfos" :saison="this.saison" ></update-saison>
     </v-dialog>
   </v-container>
 </template>
 
 <script>
-import SaisonInfo from "@/components/SaisonInfo.vue";
+import UpdateSaison from "@/components/UpdateSaison.vue";
 export default {
   name: "CardSaison",
   props: {
@@ -69,7 +73,7 @@ export default {
     }
   },
   components:  {
-    SaisonInfo
+    UpdateSaison
   }
 }
 </script>

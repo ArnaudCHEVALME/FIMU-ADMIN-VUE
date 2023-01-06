@@ -42,14 +42,6 @@
                       required
                   ></v-textarea>
                 </v-col>
-                <v-col cols="12">
-                  <v-switch
-                      v-model="switch1"
-                      inset
-                      :label="`Notifier les utilisateurs`"
-                  ></v-switch>
-                </v-col>
-
               </v-row>
             </v-container>
           </v-card-text>
@@ -77,7 +69,7 @@
 
     <div class="justify-start d-flex flex-column mb-10 ml-10 mr-10 mt-4">
       <CardNews
-          v-for="n in news" :key="n.id"
+          v-for="n in news" :key="n.newsId"
           :news="n"
           class="mb-4">
       </CardNews>
