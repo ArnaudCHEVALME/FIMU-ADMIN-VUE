@@ -138,11 +138,11 @@ export default new Vuex.Store({
         console.error(err)
       }
     },
-    async loadEveryThing({commit}, saisonId){
-      commit.dispatch("fetchGenres", saisonId)
-      commit.dispatch("fetchSousGenres", commit, saisonId)
-      commit.dispatch("fetchNews", commit, saisonId)
-      commit.dispatch("fetchPays",commit)
+    async loadEveryThing({dispatch}, saisonId){
+      dispatch("fetchGenres", saisonId)
+      dispatch("fetchSousGenres", saisonId)
+      dispatch("fetchNews", saisonId)
+      dispatch("fetchPays")
     }
   },
   modules: {}

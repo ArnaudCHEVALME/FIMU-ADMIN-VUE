@@ -46,6 +46,9 @@ import {mapState} from "vuex";
 
 export default {
   name: "NavBar",
+  mounted() {
+    this.$store.dispatch("fetchSaisons")
+  },
   computed:{
     ...mapState(["saisons", "routes"])
   },
