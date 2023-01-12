@@ -108,16 +108,17 @@ export default new Vuex.Store({
     },
     async fetchGenres({commit}, saisonId) {
       try {
-        const response = await axios.get('/api/genres/', {saisonId})
-        commit('setGenres', response.data.data)
+        console.log(saisonId)
+        const response = await axios.get('/api/genres/?saisonId='+saisonId )
+        commit('setGenres', response.data)
       } catch (error) {
         console.error(error)
       }
     },
     async fetchSousGenres({commit}, saisonId) {
       try {
-        const response = await axios.get('/api/sousGenre/', {saisonId})
-        commit('setSousGenres', response.data.data)
+        const response = await axios.get('/api/sousGenre/?saisonId='+saisonId)
+        commit('setSousGenres', response.data)
       } catch (error) {
         console.error(error)
       }
@@ -132,7 +133,7 @@ export default new Vuex.Store({
     },
     async fetchNews({commit}, saisonId){
       try {
-        const news = await axios.get("/api/news/", {saisonId})
+        const news = await axios.get('/api/news/?saisonId='+saisonId)
         commit('setNews', news.data)
       }catch (err) {
         console.error(err)
