@@ -55,6 +55,7 @@ export default {
   methods:{
     async updateSelectedSaison(saison){
       await this.$store.commit("setSelectedSaison", saison)
+      console.log(saison)
       await this.$store.dispatch("loadEveryThing", saison.saisonId)
     }
   }
