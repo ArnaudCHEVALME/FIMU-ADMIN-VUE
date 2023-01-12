@@ -8,7 +8,6 @@ import SaisonPage from "@/views/SaisonView.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import StatsView from "@/views/StatsView.vue";
 import SceneView from "@/views/SceneView.vue";
-import MapView from "@/views/MapView.vue";
 import TypeLiens from "@/views/TypeLiens.vue";
 
 axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -25,6 +24,7 @@ export default new Vuex.Store({
     news: [],
     pays: [],
     categoriesLiens:[],
+    scenes: [],
     routes: [
       {
         path: '/',
@@ -75,14 +75,6 @@ export default new Vuex.Store({
         }
       },
       {
-        path: '/cartes',
-        name: 'Carte',
-        components: {
-          default: TypeLiens,
-          menu: NavBar
-        }
-      },
-      {
         path: '/liens',
         name: 'Liens',
         components: {
@@ -90,18 +82,13 @@ export default new Vuex.Store({
           menu: NavBar
         }
       },
-      {
-        path: '/cartes',
-        name: 'Carte',
-        components: {
-          default: MapView,
-          menu: NavBar
-        }
-      }
     ]
   },
   getters: {},
   mutations: {
+    setScenes(state, scenes){
+      state.scenes = scenes
+    },
     setCategoriesLiens(state, categoriesLiens){
       state.categoriesLiens = categoriesLiens
     },
@@ -129,6 +116,14 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    async fetchScenes({commit}, saisonId) {
+      try{
+        const scenes = await axios.get('/api/scenes/?saisonId='+saisonId )
+        commit('setScenes', scenes.data.data)
+      }catch (e){
+        console.error(e)
+      }
+    },
     async fetchSaisons({commit}) {
       try {
         const saisons = await axios.get('/api/saisons/')
@@ -194,6 +189,7 @@ export default new Vuex.Store({
       dispatch("fetchPays")
       dispatch("fetchArtists")
       dispatch("fetchCategoriesLiens")
+      dispatch("fetchScenes", saisonId)
     }
   },
   modules: {}
