@@ -28,6 +28,16 @@
           v-model="saison_modif.dateSaison"
           :label="'Date de la Saison'"
       ></DatePicker>
+      <v-row>
+        <v-col cols="6">
+          <v-color-picker mode="hexa" v-model="saison_modif.couleur1">
+          </v-color-picker>
+        </v-col>
+        <v-col cols="6">
+          <v-color-picker mode="hexa" v-model="saison_modif.couleur2">
+          </v-color-picker>
+        </v-col>
+      </v-row>
     </v-card-text>
     <v-card-actions>
       <v-btn @click="$emit('ChangeStateDialog')">
@@ -54,7 +64,7 @@ export default {
   },
   data () {
     return {
-      saison_modif: this.saison
+      saison_modif: this.saison,
     }
   },
 

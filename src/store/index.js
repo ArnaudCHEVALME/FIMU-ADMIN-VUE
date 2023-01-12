@@ -7,7 +7,9 @@ import NavBar from "@/components/NavBar.vue";
 import SaisonPage from "@/views/SaisonView.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import StatsView from "@/views/StatsView.vue";
+import SceneView from "@/views/SceneView.vue";
 import MapView from "@/views/MapView.vue";
+import navBar from "@/components/NavBar.vue";
 
 axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
 
@@ -61,6 +63,14 @@ export default new Vuex.Store({
         components: {
           default: StatsView,
           menu: NavBar
+        }
+      },
+      {
+        path: '/scenes',
+        name: 'Scenes,',
+        components: {
+          default: SceneView,
+          menu: navBar
         }
       },
       {

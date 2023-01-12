@@ -12,7 +12,7 @@
         hide-overlay
         transition="dialog-bottom-transition"
     >
-      <update-saison :saison="saison_null" @validate="createSaison" @ChangeStateDialog="CreationSaisonDialogChangeState"></update-saison>
+      <update-saison :saison="saison_null" @validate="createSaison" @ChangeStateDialog="openDialog"></update-saison>
     </v-dialog>
   </v-container>
 </template>
@@ -52,6 +52,8 @@ export default {
         dateSaison: new Date(saison.dateSaison).toISOString(),
         theme: saison.theme,
         paysHonneurId: saison.paysHonneurId,
+        couleur1: saison.couleur1.hexa,
+        couleur2: saison.couleur2.hexa,
       }
       console.log(newSaison)
       await axios.post('/api/saisons/', newSaison)
