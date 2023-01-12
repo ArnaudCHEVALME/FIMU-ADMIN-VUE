@@ -127,8 +127,8 @@ export default new Vuex.Store({
   actions: {
     async fetchScenes({commit}, saisonId) {
       try{
-        const scenes = await axios.get('/api/scenes/?saisonId='+saisonId )
-        commit('setScenes', scenes.data.data)
+        const scenes = await axios.get('/api/scene/?saisonId='+saisonId )
+        commit('setScenes', scenes.data)
       }catch (e){
         console.error(e)
       }
