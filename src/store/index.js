@@ -109,7 +109,7 @@ export default new Vuex.Store({
     async fetchGenres({commit}, saisonId) {
       try {
         const response = await axios.get('/api/genres/', {saisonId})
-        commit('setGenres', response.data.data)
+        commit('setGenres', response.data)
       } catch (error) {
         console.error(error)
       }
