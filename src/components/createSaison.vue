@@ -5,7 +5,7 @@
       </v-card-title>
       <v-card-text>
         <v-select v-model="paysId"
-                  :items="paysAll"
+                  :items="pays"
                   item-text="nompays"
                   item-value="paysId"
                   label="Pays à l'honneur"
@@ -47,7 +47,7 @@ export default {
   name: "createSaison",
   components: {DatePicker},
   computed: {
-    ...mapState(['paysAll'])
+    ...mapState(['pays'])
   },
   data () {
     return {

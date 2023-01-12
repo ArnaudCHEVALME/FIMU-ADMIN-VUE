@@ -5,7 +5,7 @@
     </v-card-title>
     <v-card-text>
       <v-select v-model="paysId"
-                :items="paysAll"
+                :items="pays"
                 item-text="nompays"
                 item-value="paysId"
                 label="Pays à l'honneur"
@@ -20,13 +20,12 @@
       </v-text-field>
       <v-file-input
           truncate-length="15"
-          v-model="image"
           label="Image de la Saison"
       ></v-file-input>
       <v-img v-if="image != null " :src="getImage()" width="400" height="400"></v-img>
       <div v-else>Pas d'image pour cette Saison</div>
       <DatePicker
-          v-model="date"
+          :value="date"
           :label="'Date de la Saison'"
       ></DatePicker>
     </v-card-text>
@@ -34,7 +33,7 @@
       <v-btn @click="$emit('ChangeStateDialog')">
         Annulez
       </v-btn>
-      <v-btn @click="updateSaison">
+      <v-btn @click="updateSaison, $emit('ChangeStateDialog')">
         Mettre a jour
       </v-btn>
     </v-card-actions>
@@ -49,7 +48,7 @@ export default {
   name: "createSaison",
   components: {DatePicker},
   computed: {
-    ...mapState(['paysAll'])
+    ...mapState(['pays'])
   },
   data () {
     return {

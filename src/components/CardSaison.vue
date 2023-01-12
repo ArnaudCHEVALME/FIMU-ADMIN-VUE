@@ -22,7 +22,7 @@
           <v-col cols="4">
             <v-btn @click="showInfos" color="grey">
               <v-icon>
-                mdi-dots-horizontal-circle-outline
+                mdi-pen
               </v-icon>
             </v-btn>
           </v-col>
@@ -31,7 +31,7 @@
           <v-col cols="4">
             <v-btn color="red">
               <v-icon>
-                mdi-delete-outline
+                mdi-delete
               </v-icon>
             </v-btn>
           </v-col>
