@@ -43,7 +43,6 @@ import { mapState } from 'vuex';
 
 export default {
   name: "MapView.vue",
-
   computed: {
     ...mapState(["genres", "sousGenres"]),
   }
