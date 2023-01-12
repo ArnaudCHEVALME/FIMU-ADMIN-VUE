@@ -46,12 +46,16 @@ import {mapState} from "vuex";
 
 export default {
   name: "NavBar",
+  mounted() {
+    this.$store.dispatch("fetchSaisons")
+  },
   computed:{
     ...mapState(["saisons", "routes"])
   },
   methods:{
-    updateSelectedSaison(saison){
-      this.$store.commit("setSelectedSaison", saison)
+    async updateSelectedSaison(saison){
+      await this.$store.commit("setSelectedSaison", saison)
+      await this.$store.dispatch("loadEveryThing", saison.saisonId)
     }
   }
 }

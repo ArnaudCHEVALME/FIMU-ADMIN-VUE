@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-btn @click="CreationSaisonDialogChangeState">
+    <v-btn @click="openDialog">
       créer une saison
     </v-btn>
     <card-saison v-for="(saison, id) in saisons" :key="id"
@@ -12,7 +12,7 @@
         hide-overlay
         transition="dialog-bottom-transition"
     >
-      <create-saison @ChangeStateDialog="CreationSaisonDialogChangeState"></create-saison>
+      <create-saison @ChangeStateDialog="openDialog"></create-saison>
     </v-dialog>
   </v-container>
 </template>
@@ -36,7 +36,7 @@ export default {
     }
   },
   methods: {
-    CreationSaisonDialogChangeState() {
+    openDialog() {
       this.dialog = !this.dialog
     }
   }

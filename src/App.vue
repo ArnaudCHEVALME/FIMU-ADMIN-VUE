@@ -14,16 +14,7 @@ export default {
   data: () => ({
   }),
   mounted() {
-    this.loadEveryThing()
-  },
-  methods: {
-    async loadEveryThing() {
-      await this.$store.dispatch('fetchSaisons')
-      await this.$store.dispatch('fetchPays')
-      await this.$store.dispatch('fetchNews')
-      await this.$store.dispatch('fetchGenres')
-      await this.$store.dispatch('fetchSousGenres')
-    },
+    this.$store.dispatch("loadEveryThing")
   },
 };
 </script>
