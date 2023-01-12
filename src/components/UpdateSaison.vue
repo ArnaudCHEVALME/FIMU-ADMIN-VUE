@@ -4,8 +4,8 @@
       Création d'une saison
     </v-card-title>
     <v-card-text>
-      <v-select v-model="paysId"
-                :items="paysAll"
+      <v-select v-model="saison_modif.paysHonneurId"
+                :items="pays"
                 item-text="nompays"
                 item-value="paysId"
                 label="Pays à l'honneur"
@@ -14,28 +14,37 @@
       </v-select>
       <v-text-field
           prepend-icon="mdi-palette"
-          v-model="theme"
+          v-model="saison_modif.theme"
           label="Thème de la Saison"
       >
       </v-text-field>
       <v-file-input
           truncate-length="15"
-          v-model="image"
           label="Image de la Saison"
       ></v-file-input>
       <v-img v-if="image != null " :src="getImage()" width="400" height="400"></v-img>
       <div v-else>Pas d'image pour cette Saison</div>
       <DatePicker
-          v-model="date"
+          v-model="saison_modif.dateSaison"
           :label="'Date de la Saison'"
       ></DatePicker>
+      <v-row>
+        <v-col cols="6">
+          <v-color-picker mode="hexa" v-model="saison_modif.couleur1">
+          </v-color-picker>
+        </v-col>
+        <v-col cols="6">
+          <v-color-picker mode="hexa" v-model="saison_modif.couleur2">
+          </v-color-picker>
+        </v-col>
+      </v-row>
     </v-card-text>
     <v-card-actions>
       <v-btn @click="$emit('ChangeStateDialog')">
         Annulez
       </v-btn>
-      <v-btn @click="updateSaison">
-        Mettre a jour
+      <v-btn @click="$emit('validate', saison_modif)">
+        Valider
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -44,34 +53,22 @@
 <script>
 import {mapState} from "vuex";
 import DatePicker from "@/components/DatePicker.vue";
-import axios from "axios";
 export default {
   name: "createSaison",
   components: {DatePicker},
   computed: {
-    ...mapState(['paysAll'])
-  },
-  data () {
-    return {
-      date: new Date(this.saison.dateSaison),
-      paysId: this.saison.paysHonneurId,
-      theme: this.saison.theme,
-      image: this.saison.bannierePath
-    }
+    ...mapState(['pays'])
   },
   props: {
     saison: Object
   },
+  data () {
+    return {
+      saison_modif: this.saison,
+    }
+  },
+
   methods: {
-    async updateSaison(){
-      let saison = {
-        dateSaison: this.date.toISOString(),
-        theme: this.theme.theme,
-        bannierePath: this.saison.saisonId
-      }
-      await axios.put('/api/saisons/'+this.saison.saisonId, saison)
-      await this.$store.dispatch('fetchSaisons')
-    },
     getImage(){
       return require(`../../public/banniereSaison/${this.image}.png`)
     },

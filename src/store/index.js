@@ -7,6 +7,7 @@ import NavBar from "@/components/NavBar.vue";
 import SaisonPage from "@/views/SaisonView.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import StatsView from "@/views/StatsView.vue";
+import SceneView from "@/views/SceneView.vue";
 import TypeLiens from "@/views/TypeLiens.vue";
 import GenreView from "@/views/GenreView.vue";
 
@@ -22,8 +23,9 @@ export default new Vuex.Store({
     genres: [],
     sousGenres: [],
     news: [],
-    paysAll: [],
+    pays: [],
     categoriesLiens:[],
+    scenes: [],
     routes: [
       {
         path: '/',
@@ -66,6 +68,14 @@ export default new Vuex.Store({
         }
       },
       {
+        path: '/scenes',
+        name: 'Scenes,',
+        components: {
+          default: SceneView,
+          menu: NavBar
+        }
+      },
+      {
         path: '/liens',
         name: 'Liens',
         components: {
@@ -80,11 +90,14 @@ export default new Vuex.Store({
           default: GenreView,
           menu: NavBar
         }
-      }
+      },
     ]
   },
   getters: {},
   mutations: {
+    setScenes(state, scenes){
+      state.scenes = scenes
+    },
     setCategoriesLiens(state, categoriesLiens){
       state.categoriesLiens = categoriesLiens
     },
@@ -105,13 +118,21 @@ export default new Vuex.Store({
       state.news = news
     },
     setPays(state, pays){
-      state.paysAll = pays
+      state.pays = pays
     },
     setArtists(state, artistes){
       state.artistes = artistes
     },
   },
   actions: {
+    async fetchScenes({commit}, saisonId) {
+      try{
+        const scenes = await axios.get('/api/scenes/?saisonId='+saisonId )
+        commit('setScenes', scenes.data.data)
+      }catch (e){
+        console.error(e)
+      }
+    },
     async fetchSaisons({commit}) {
       try {
         const saisons = await axios.get('/api/saisons/')
@@ -157,7 +178,7 @@ export default new Vuex.Store({
     async fetchPays({commit}) {
       try {
         const pays = await axios.get('/api/pays/')
-        commit('setPays', pays.data.data)
+        commit('setPays', pays.data)
       } catch (error) {
         console.error(error)
       }
@@ -185,6 +206,7 @@ export default new Vuex.Store({
       dispatch("fetchPays")
       dispatch("fetchArtists")
       dispatch("fetchCategoriesLiens")
+      dispatch("fetchScenes", saisonId)
     }
   },
   modules: {}

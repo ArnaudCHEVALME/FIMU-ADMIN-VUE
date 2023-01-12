@@ -12,33 +12,64 @@
         hide-overlay
         transition="dialog-bottom-transition"
     >
-      <create-saison @ChangeStateDialog="openDialog"></create-saison>
+      <update-saison :saison="saison_null" @validate="createSaison" @ChangeStateDialog="openDialog"></update-saison>
     </v-dialog>
   </v-container>
 </template>
 
 <script>
 import CardSaison from "@/components/CardSaison.vue";
-import CreateSaison from "@/components/CreateSaison.vue";
+import UpdateSaison from "@/components/UpdateSaison.vue";
 import {mapState} from "vuex";
+import axios from "axios";
 export default {
   name: "SaisonPage",
   computed: {
     ...mapState(['saisons']),
   },
   components: {
-    CreateSaison,
+    UpdateSaison,
     CardSaison
   },
   data() {
     return {
-     dialog: false
+     dialog: false,
+      saison_null: {
+        paysHonneurId: null,
+        dateSaison: null,
+        theme: null,
+        image: null
+      }
     }
   },
   methods: {
     openDialog() {
       this.dialog = !this.dialog
-    }
+    },
+    async createSaison(saison){
+      console.log(saison)
+      let newSaison = {
+        dateSaison: new Date(saison.dateSaison).toISOString(),
+        theme: saison.theme,
+        paysHonneurId: saison.paysHonneurId,
+        couleur1: saison.couleur1.hexa,
+        couleur2: saison.couleur2.hexa,
+      }
+      console.log(newSaison)
+      await axios.post('/api/saisons/', newSaison)
+      await this.$store.dispatch('fetchSaisons')
+      this.openDialog()
+    },
+    async updateSaison(){
+      let saison = {
+        dateSaison: this.dateSaison.toISOString(),
+        theme: this.theme.theme,
+        bannierePath: null
+      }
+      await axios.put('/api/saisons/'+this.saison.saisonId, saison)
+      await this.$store.dispatch('fetchSaisons')
+      this.openDialog()
+    },
   }
 }
 </script>
