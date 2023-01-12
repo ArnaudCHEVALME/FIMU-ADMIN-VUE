@@ -156,7 +156,7 @@ export default new Vuex.Store({
     async fetchArtists({commit}, saisonId){
       try {
         const news = await axios.get("/api/artistes/?saisonId=", +saisonId)
-        commit('setNews', news.data)
+        commit('setArtists', news.data.data)
       }catch (err) {
         console.error(err)
       }
