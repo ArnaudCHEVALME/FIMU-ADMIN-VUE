@@ -9,7 +9,7 @@
       nameGraph = "Vue des genres"
       :items='genres'
       abs="libelle"
-      ord="nbRecherche"
+      ord="nbRecherche" 
       colors="#ff0000"
       >
     </GraphicComponent>
