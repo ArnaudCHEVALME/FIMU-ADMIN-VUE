@@ -21,6 +21,8 @@ export default {
       await this.$store.dispatch('fetchSaisons')
       await this.$store.dispatch('fetchPays')
       await this.$store.dispatch('fetchNews')
+      await this.$store.dispatch('fetchGenres')
+      await this.$store.dispatch('fetchSousGenres')
     },
   },
 };
