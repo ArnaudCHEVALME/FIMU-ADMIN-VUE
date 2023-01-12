@@ -9,6 +9,7 @@ import SearchBar from "@/components/SearchBar.vue";
 import StatsView from "@/views/StatsView.vue";
 import SceneView from "@/views/SceneView.vue";
 import TypeLiens from "@/views/TypeLiens.vue";
+import GenreView from "@/views/GenreView.vue";
 
 axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
 
@@ -79,6 +80,14 @@ export default new Vuex.Store({
         name: 'Liens',
         components: {
           default: TypeLiens,
+          menu: NavBar
+        }
+      },
+      {
+        path: '/genres',
+        name: 'Genres',
+        components: {
+          default: GenreView,
           menu: NavBar
         }
       },
