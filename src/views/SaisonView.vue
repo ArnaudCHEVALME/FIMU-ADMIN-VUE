@@ -12,7 +12,7 @@
         hide-overlay
         transition="dialog-bottom-transition"
     >
-      <create-saison @ChangeStateDialog="CreationSaisonDialogChangeState"></create-saison>
+      <create-saison :saison="saison_null" @validate="createSaison" @ChangeStateDialog="CreationSaisonDialogChangeState"></create-saison>
     </v-dialog>
   </v-container>
 </template>
@@ -21,6 +21,7 @@
 import CardSaison from "@/components/CardSaison.vue";
 import CreateSaison from "@/components/createSaison.vue";
 import {mapState} from "vuex";
+import axios from "axios";
 export default {
   name: "SaisonPage",
   computed: {
@@ -32,12 +33,29 @@ export default {
   },
   data() {
     return {
-     dialog: false
+     dialog: false,
+      saison_null: {
+        paysHonneurId: null,
+        dateSaison: null,
+        theme: null,
+        image: null
+      }
     }
   },
   methods: {
     CreationSaisonDialogChangeState() {
       this.dialog = !this.dialog
+    },
+    async createSaison(saison){
+      let newSaison = {
+        dateSaison: this.saison.date.toISOString(),
+        theme: this.saison.theme,
+        paysHonneurId: this.saison.paysId,
+      }
+      console.log(saison)
+      await axios.post('/api/saisons/', newSaison)
+      await this.$store.dispatch('fetchSaisons')
+      this.CreationSaisonDialogChangeState()
     }
   }
 }

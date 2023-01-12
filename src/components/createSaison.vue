@@ -32,8 +32,8 @@
         <v-btn @click="$emit('ChangeStateDialog')">
           Annulez
         </v-btn>
-        <v-btn @click="createSaison">
-          Créer
+        <v-btn @click="$emit('validate', saison_mod)">
+          Valider
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -42,31 +42,23 @@
 <script>
 import {mapState} from "vuex";
 import DatePicker from "@/components/DatePicker.vue";
-import axios from "axios";
 export default {
   name: "createSaison",
   components: {DatePicker},
   computed: {
     ...mapState(['pays'])
   },
+  props: {
+    saison: Object
+  },
   data () {
     return {
-      date: null, //TODO corriger le pb de date??
-      paysId: null,
-      theme: null,
-      image: null
-    }
-  },
-  methods: {
-    async createSaison(){
-      let saison = {
-        dateSaison: this.date.toISOString(),
-        theme: this.theme,
-        paysHonneurId: this.paysId,
+      saison_mod: {
+        date: this.saison.dateSaison, //TODO corriger le pb de date??
+        paysId: this.saison.paysHonneurId,
+        theme: this.saison.theme,
+        image: null
       }
-      console.log(saison)
-      await axios.post('/api/saisons/', saison)
-      await this.$store.dispatch('fetchSaisons')
     }
   }
 }
