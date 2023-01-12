@@ -8,6 +8,7 @@ import SaisonPage from "@/views/SaisonView.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import StatsView from "@/views/StatsView.vue";
 import MapView from "@/views/MapView.vue";
+import GenreView from "@/views/GenreView.vue";
 
 axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
 
@@ -68,6 +69,14 @@ export default new Vuex.Store({
         name: 'Carte',
         components: {
           default: MapView,
+          menu: NavBar
+        }
+      },
+      {
+        path: '/genres',
+        name: 'Genres',
+        components: {
+          default: GenreView,
           menu: NavBar
         }
       }
