@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-btn @click="CreationSaisonDialogChangeState">
+    <v-btn @click="openDialog">
       créer une saison
     </v-btn>
     <card-saison v-for="(saison, id) in saisons" :key="id"
@@ -43,7 +43,7 @@ export default {
     }
   },
   methods: {
-    CreationSaisonDialogChangeState() {
+    openDialog() {
       this.dialog = !this.dialog
     },
     async createSaison(saison){
@@ -56,7 +56,7 @@ export default {
       console.log(newSaison)
       await axios.post('/api/saisons/', newSaison)
       await this.$store.dispatch('fetchSaisons')
-      this.CreationSaisonDialogChangeState()
+      this.openDialog()
     },
     async updateSaison(){
       let saison = {
@@ -66,7 +66,7 @@ export default {
       }
       await axios.put('/api/saisons/'+this.saison.saisonId, saison)
       await this.$store.dispatch('fetchSaisons')
-      this.CreationSaisonDialogChangeState()
+      this.openDialog()
     },
   }
 }

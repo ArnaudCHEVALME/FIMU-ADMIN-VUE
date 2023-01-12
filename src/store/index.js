@@ -15,6 +15,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    artistes: [],
     selectedSaison: null,
     saisons: [],
     genres: [],
@@ -93,6 +94,9 @@ export default new Vuex.Store({
     setPays(state, pays){
       state.pays = pays
     },
+    setArtists(state, artistes){
+      state.artistes = artistes
+    },
   },
   actions: {
     async fetchSaisons({commit}) {
@@ -105,18 +109,18 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async fetchGenres({commit, saisonId}) {
+    async fetchGenres({commit}, saisonId) {
       try {
-        const response = await axios.get('/api/genres/', {saisonId})
-        commit('setGenres', response.data.data)
+        const response = await axios.get('/api/genres/?saisonId='+saisonId )
+        commit('setGenres', response.data)
       } catch (error) {
         console.error(error)
       }
     },
     async fetchSousGenres({commit}, saisonId) {
       try {
-        const response = await axios.get('/api/sousGenre/', {saisonId})
-        commit('setSousGenres', response.data.data)
+        const response = await axios.get('/api/sousGenre/?saisonId='+saisonId)
+        commit('setSousGenres', response.data)
       } catch (error) {
         console.error(error)
       }
@@ -129,13 +133,28 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async fetchNews({commit}){
+    async fetchNews({commit}, saisonId){
       try {
-        const news = await axios.get("/api/news/")
+        const news = await axios.get('/api/news/?saisonId='+saisonId)
         commit('setNews', news.data)
       }catch (err) {
         console.error(err)
       }
+    },
+    async fetchArtists({commit}, saisonId){
+      try {
+        const news = await axios.get("/api/artistes/?saisonId=", +saisonId)
+        commit('setArtists', news.data.data)
+      }catch (err) {
+        console.error(err)
+      }
+    },
+    async loadEveryThing({dispatch}, saisonId){
+      dispatch("fetchGenres", saisonId)
+      dispatch("fetchSousGenres", saisonId)
+      dispatch("fetchNews", saisonId)
+      dispatch("fetchPays")
+      dispatch("fetchArtists")
     }
   },
   modules: {}
