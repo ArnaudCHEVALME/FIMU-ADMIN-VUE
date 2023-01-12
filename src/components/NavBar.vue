@@ -18,22 +18,23 @@
         item-text="dateSaison"
         item-value="saisonId"
         label="Saisons"
+        return-object
+        @change="updateSelectedSaison"
     ></v-select>
 
     <v-divider></v-divider>
 
     <v-list dense nav>
       <v-list-item
-          v-for="item in menus"
-          :key="item.title"
+          v-for="item in routes"
+          :key="item.name"
           link
       >
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
-
-        <v-list-item-content @click="$router.push(item.route)">
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        <v-list-item-content @click="$router.push(item.path)">
+          <v-list-item-title>{{ item.name }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -46,47 +47,11 @@ import {mapState} from "vuex";
 export default {
   name: "NavBar",
   computed:{
-    ...mapState(["saisons"])
+    ...mapState(["saisons", "routes"])
   },
-  data: () => {
-    {
-      return {
-        menus: [
-          {
-            title: "Artistes",
-            icon: "mdi-guitar-acoustic",
-            route: "/artistes"
-          }, {
-            title: "Scènes",
-            icon: "mdi-microphone-variant",
-            route: "/scenes"
-          }, {
-            title: "Programmation",
-            icon: "mdi-clock-time-four-outline",
-            route: "/programmation"
-          }, {
-            title: "Carte",
-            icon: "mdi-map",
-            route: "/carte"
-          }, {
-            title: "News",
-            icon: "mdi-newspaper-variant-multiple",
-            route: "/news"
-          }, {
-            title: "Statistiques",
-            icon: "mdi-chart-areaspline",
-            route: "/stats"
-          }, {
-            title: "Gestion des saisons",
-            icon: "mdi-calendar",
-            route: "/saisons"
-          }, {
-            title: "Gestion des utilisateur",
-            icon: "mdi-account",
-            route: "/utilisateurs"
-          }
-        ]
-      }
+  methods:{
+    updateSelectedSaison(saison){
+      this.$store.commit("setSelectedSaison", saison)
     }
   }
 }

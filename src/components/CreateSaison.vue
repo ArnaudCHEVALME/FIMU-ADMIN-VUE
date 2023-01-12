@@ -32,7 +32,7 @@
         <v-btn @click="$emit('ChangeStateDialog')">
           Annulez
         </v-btn>
-        <v-btn @click="createSaison">
+        <v-btn @click="CreateSaison">
           Créer
         </v-btn>
       </v-card-actions>

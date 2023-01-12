@@ -65,7 +65,6 @@ export default {
       return require(`../../public/banniereSaison/${this.saison.bannierePath}.png`)
     },
     showInfos(){
-      console.log("Pute")
       this.dialogState = true
     },
     closeInfos(){
