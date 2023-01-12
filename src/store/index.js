@@ -71,8 +71,6 @@ export default new Vuex.Store({
         }
       }
     ]
-
-    pays: [],
   },
   getters: {},
   mutations: {

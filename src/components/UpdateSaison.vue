@@ -4,7 +4,7 @@
       Création d'une saison
     </v-card-title>
     <v-card-text>
-      <v-select v-model="paysId"
+      <v-select v-model="saison_modif.paysHonneurId"
                 :items="pays"
                 item-text="nompays"
                 item-value="paysId"
@@ -14,7 +14,7 @@
       </v-select>
       <v-text-field
           prepend-icon="mdi-palette"
-          v-model="theme"
+          v-model="saison_modif.theme"
           label="Thème de la Saison"
       >
       </v-text-field>
@@ -25,7 +25,7 @@
       <v-img v-if="image != null " :src="getImage()" width="400" height="400"></v-img>
       <div v-else>Pas d'image pour cette Saison</div>
       <DatePicker
-          :value="date"
+          v-model="saison_modif.dateSaison"
           :label="'Date de la Saison'"
       ></DatePicker>
     </v-card-text>
@@ -33,8 +33,8 @@
       <v-btn @click="$emit('ChangeStateDialog')">
         Annulez
       </v-btn>
-      <v-btn @click="updateSaison, $emit('ChangeStateDialog')">
-        Mettre a jour
+      <v-btn @click="$emit('validate', saison_modif)">
+        Valider
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -43,34 +43,22 @@
 <script>
 import {mapState} from "vuex";
 import DatePicker from "@/components/DatePicker.vue";
-import axios from "axios";
 export default {
   name: "createSaison",
   components: {DatePicker},
   computed: {
     ...mapState(['pays'])
   },
-  data () {
-    return {
-      date: new Date(this.saison.dateSaison),
-      paysId: this.saison.paysHonneurId,
-      theme: this.saison.theme,
-      image: this.saison.bannierePath
-    }
-  },
   props: {
     saison: Object
   },
+  data () {
+    return {
+      saison_modif: this.saison
+    }
+  },
+
   methods: {
-    async updateSaison(){
-      let saison = {
-        dateSaison: this.date.toISOString(),
-        theme: this.theme.theme,
-        bannierePath: this.saison.saisonId
-      }
-      await axios.put('/api/saisons/'+this.saison.saisonId, saison)
-      await this.$store.dispatch('fetchSaisons')
-    },
     getImage(){
       return require(`../../public/banniereSaison/${this.image}.png`)
     },
