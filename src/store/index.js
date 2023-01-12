@@ -106,7 +106,7 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async fetchGenres({commit, saisonId}) {
+    async fetchGenres({commit}, saisonId) {
       try {
         const response = await axios.get('/api/genres/', {saisonId})
         commit('setGenres', response.data.data)
@@ -130,13 +130,19 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async fetchNews({commit}){
+    async fetchNews({commit}, saisonId){
       try {
-        const news = await axios.get("/api/news/")
+        const news = await axios.get("/api/news/", {saisonId})
         commit('setNews', news.data)
       }catch (err) {
         console.error(err)
       }
+    },
+    async loadEveryThing({commit}, saisonId){
+      commit.dispatch("fetchGenres", saisonId)
+      commit.dispatch("fetchSousGenres", commit, saisonId)
+      commit.dispatch("fetchNews", commit, saisonId)
+      commit.dispatch("fetchPays",commit)
     }
   },
   modules: {}

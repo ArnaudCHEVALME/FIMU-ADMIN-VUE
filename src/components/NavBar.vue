@@ -50,8 +50,9 @@ export default {
     ...mapState(["saisons", "routes"])
   },
   methods:{
-    updateSelectedSaison(saison){
-      this.$store.commit("setSelectedSaison", saison)
+    async updateSelectedSaison(saison){
+      await this.$store.commit("setSelectedSaison", saison)
+      await this.$store.dispatch("loadEveryThing", saison.saisonId)
     }
   }
 }
