@@ -69,7 +69,7 @@ export default new Vuex.Store({
       },
       {
         path: '/scenes',
-        name: 'Scenes,',
+        name: 'Scenes',
         components: {
           default: SceneView,
           menu: NavBar
