@@ -19,7 +19,7 @@
 
 <script>
 import CardSaison from "@/components/CardSaison.vue";
-import CreateSaison from "@/components/createSaison.vue";
+import CreateSaison from "@/components/CreateSaison.vue";
 import {mapState} from "vuex";
 import axios from "axios";
 export default {

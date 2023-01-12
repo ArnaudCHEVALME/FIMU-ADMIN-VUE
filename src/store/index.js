@@ -1,6 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import LoginView from "@/views/LoginView.vue";
+import NewsView from "@/views/NewsView.vue";
+import NavBar from "@/components/NavBar.vue";
+import SaisonPage from "@/views/SaisonView.vue";
+import SearchBar from "@/components/SearchBar.vue";
+import StatsView from "@/views/StatsView.vue";
+import MapView from "@/views/MapView.vue";
 
 axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
 
@@ -8,20 +15,73 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    saisonId:-1,
+    selectedSaison: null,
     saisons: [],
     genres: [],
     sousGenres: [],
     news: [],
     pays: [],
+    routes: [
+      {
+        path: '/',
+        name: 'Login',
+        components: {
+          default: LoginView,
+          menu: null
+        }
+      },
+      {
+        path: '/news',
+        name: 'News',
+        components: {
+          default: NewsView,
+          menu: NavBar
+        }
+      },
+      {
+        path: '/saisons',
+        name: 'Saisons',
+        components: {
+          default: SaisonPage,
+          menu: NavBar
+        }
+      },
+      {
+        path: '/search',
+        name: 'Search',
+        components: {
+          default: SearchBar,
+          menu: NavBar
+        }
+      },
+      {
+        path: '/stats',
+        name: 'Stats',
+        components: {
+          default: StatsView,
+          menu: NavBar
+        }
+      },
+      {
+        path: '/cartes',
+        name: 'Carte',
+        components: {
+          default: MapView,
+          menu: NavBar
+        }
+      }
+    ]
+
+    pays: [],
   },
   getters: {},
   mutations: {
-    setSaisonId(state, saisonId) {
-      state.saisonId = saisonId
+    setSelectedSaison(state, saison) {
+      state.selectedSaison = saison
     },
     setSaisons(state, saisons){
       state.saisons = saisons
+      console.log(state.saisons)
     },
     setGenres(state, genres){
       state.genres = genres
@@ -41,6 +101,8 @@ export default new Vuex.Store({
       try {
         const saisons = await axios.get('/api/saisons/')
         commit('setSaisons', saisons.data.data)
+        let s = saisons.data.data.sort((s0, s1) => new Date(s0.dateSaison) < new Date(s1.dateSaison))[0]
+        commit('setSelectedSaison', s)
       } catch (error) {
         console.error(error)
       }
