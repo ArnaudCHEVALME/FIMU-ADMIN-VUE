@@ -7,7 +7,7 @@ import NavBar from "@/components/NavBar.vue";
 import SaisonPage from "@/views/SaisonView.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import StatsView from "@/views/StatsView.vue";
-import MapView from "@/views/MapView.vue";
+import TypeLiens from "@/views/TypeLiens.vue";
 import GenreView from "@/views/GenreView.vue";
 
 axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -23,6 +23,7 @@ export default new Vuex.Store({
     sousGenres: [],
     news: [],
     paysAll: [],
+    categoriesLiens:[],
     routes: [
       {
         path: '/',
@@ -65,10 +66,10 @@ export default new Vuex.Store({
         }
       },
       {
-        path: '/cartes',
-        name: 'Carte',
+        path: '/liens',
+        name: 'Liens',
         components: {
-          default: MapView,
+          default: TypeLiens,
           menu: NavBar
         }
       },
@@ -81,10 +82,12 @@ export default new Vuex.Store({
         }
       }
     ]
-
   },
   getters: {},
   mutations: {
+    setCategoriesLiens(state, categoriesLiens){
+      state.categoriesLiens = categoriesLiens
+    },
     setSelectedSaison(state, saison) {
       state.selectedSaison = saison
     },
@@ -135,6 +138,14 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async fetchCategoriesLiens({commit}) {
+      try {
+        const response = await axios.get('/api/categoriesReseaux/')
+        commit('setCategoriesLiens', response.data.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async fetchPays({commit}) {
       try {
         const pays = await axios.get('/api/pays/')
@@ -165,6 +176,7 @@ export default new Vuex.Store({
       dispatch("fetchNews", saisonId)
       dispatch("fetchPays")
       dispatch("fetchArtists")
+      dispatch("fetchCategoriesLiens")
     }
   },
   modules: {}
